@@ -1,1 +1,44 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    text-align: center;
+    background-color: rgba(6, 233, 101, 0.425);
+
+    h1, h2 {
+        width: 50%;
+        margin: auto;
+        text-align: start;
+    }
+
+    .logout-button {
+        padding: 10px;
+        font-size: 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        margin-top: 15px;
+
+        &:hover {
+            background-color: red;
+        }
+    }
+
+    .registration, .access {
+        margin: 30px auto;
+        width: 50%;
+        text-align: start;
+    }
+
+    label {
+        margin-right: 10px;
+        margin-bottom: 15px;
+    }
+}
