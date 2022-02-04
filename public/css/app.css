@@ -11000,3 +11000,20 @@ body label {
   margin-bottom: 15px;
 }
 
+body .container-post {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+body .container-post .list-post {
+  width: calc(25% - 15px);
+  text-align: left;
+  border: 2px solid black;
+  margin-bottom: 20px;
+}
+
+body .container-post .list-post .description-post {
+  word-wrap: break-word;
+}
+

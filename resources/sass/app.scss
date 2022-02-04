@@ -41,4 +41,23 @@ body {
         margin-right: 10px;
         margin-bottom: 15px;
     }
+
+    .container-post {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        .list-post {
+
+            width: calc(100% / 4 - 15px);
+            text-align: left;
+            border: 2px solid black;
+            margin-bottom: 20px;
+            
+            .description-post {
+                word-wrap: break-word;
+            }
+        }
+    }
+
 }

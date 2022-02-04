@@ -5,7 +5,7 @@
         <h1>Nome dell'utente: {{ Auth::user() -> name }}</h1>
         <a href="{{ route('logout') }}"><button class="logout-button">DISCONNETTITI</button></a>
     @else
-        <h1>Registrati o Accedi per vedere il tuo nome</h1>
+        <h1>Registrati o Accedi per vedere il tuo nome e i post</h1>
     @endauth
 
     @guest
@@ -61,22 +61,29 @@
 
     <h2>Lista dei post:</h2>
 
-    <ul>
+    <div class="container-post">
+
         @foreach ($posts as $post)
-            <li>
-                <p>Titolo: {{$post -> title}}</p>
 
-                <p>Sottotitolo: {{$post -> subtitle}}</p>
+        <div class="list-post">
 
-                <p>Autore: {{$post -> author}}</p>
+            <p>Titolo: {{$post -> title}}</p>
 
-                <p>Data: {{$post -> date}}</p>
+            <p>Sottotitolo: {{$post -> subtitle}}</p>
 
-                <p>Descrizione: {{$post -> description}}</p>
+            <p>Autore: {{$post -> author}}</p>
 
-            </li>
+            <p>Data: {{$post -> date}}</p>
+
+            <p class="description-post">Descrizione: {{$post -> description}}</p>
+    
+        </div>
+
         @endforeach
-    </ul>
+
+    </div>
+
+    <h2>Crea il tuo post personalizzato!</h2>
 
     <form action="{{ route('store') }}" method="post">
 
@@ -84,19 +91,19 @@
         @csrf
 
         <label for="title">Titolo:</label>
-        <input type="text" name="title" placeholder="title"><br>
+        <input type="text" name="title" placeholder="Titolo"><br>
 
         <label for="subtitle">Sottotitolo:</label>
-        <input type="text" name="subtitle" placeholder="subtitle"><br>
+        <input type="text" name="subtitle" placeholder="Sottotitolo"><br>
 
         <label for="author">Autore:</label>
-        <input type="text" name="author"><br>
+        <input type="text" name="author" placeholder="Autore"><br>
 
         <label for="date">Data:</label>
-        <input type="date" name="date" placeholder="date"><br>
+        <input type="date" name="date"><br>
 
         <label for="description">Descrizione:</label>
-        <input type="text" name="description"><br>
+        <input type="text" name="description" placeholder="Descrizione"><br>
 
         <input type="submit" value="CREATE">
     </form>
