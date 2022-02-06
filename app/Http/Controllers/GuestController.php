@@ -9,8 +9,16 @@ use App\Post;
 class GuestController extends Controller
 {
     public function home(){
+        return view('pages.homepage');
+    }
+
+    public function posts(){
         $posts = Post::all();
-        return view('pages.homepage', compact('posts'));
+        return view('pages.posts', compact('posts'));
+    }
+
+    public function create() {
+        return view('pages.create');
     }
 
     public function store(Request $request) {
@@ -24,6 +32,6 @@ class GuestController extends Controller
 
         $post = Post::create($datas);
 
-        return redirect() -> route('home');
+        return redirect() -> route('posts');
     }
 }
