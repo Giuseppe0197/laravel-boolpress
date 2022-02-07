@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Category;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +20,8 @@ class GuestController extends Controller
     }
 
     public function create() {
-        return view('pages.create');
+        $categories = Category::all();
+        return view('pages.create', compact('categories'));
     }
 
     public function store(Request $request) {
@@ -34,7 +35,13 @@ class GuestController extends Controller
 
         $datas['author'] = Auth::user() -> name;
 
-        $post = Post::create($datas);
+        $category = Category::findOrFail($request -> get('category_id'));
+
+        $post = Post::make($datas);
+
+        $post -> category() -> associate($category);
+
+        $post -> save();
 
         return redirect() -> route('posts');
     }

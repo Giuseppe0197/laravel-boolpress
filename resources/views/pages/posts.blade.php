@@ -22,6 +22,8 @@
             <p>Data: {{$post -> date}}</p>
 
             <p class="description-post">Descrizione: {{$post -> description}}</p>
+
+            <p>Categoria: {{$post -> category -> name}}</p>
     
         </div>
 

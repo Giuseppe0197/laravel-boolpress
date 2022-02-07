@@ -15,14 +15,17 @@
         <label for="subtitle">Sottotitolo:</label>
         <input type="text" name="subtitle" placeholder="Sottotitolo"><br>
 
-        {{-- <label for="author">Autore:</label>
-        <input type="text" name="author" placeholder="Autore"><br> --}}
-
         <label for="date">Data:</label>
         <input type="date" name="date"><br>
 
         <label for="description">Descrizione:</label>
         <input type="text" name="description" placeholder="Descrizione"><br>
+
+        <select name="category_id">
+            @foreach ($categories as $category)
+                <option value="{{$category -> id}}">{{$category -> name}}</option>
+            @endforeach
+        </select>
 
         <input type="submit" value="CREATE">
     </form>
