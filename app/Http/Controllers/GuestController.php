@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
+
 
 class GuestController extends Controller
 {
@@ -25,10 +27,12 @@ class GuestController extends Controller
         $datas = $request -> validate([
             'title' => 'required|string|max:255',
             'subtitle' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
+            /* 'author' => 'required|string|max:255', */
             'date' => 'required|date',
             'description' => 'required|'
         ]);
+
+        $datas['author'] = Auth::user() -> name;
 
         $post = Post::create($datas);
 

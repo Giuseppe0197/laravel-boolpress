@@ -15,8 +15,8 @@
         <label for="subtitle">Sottotitolo:</label>
         <input type="text" name="subtitle" placeholder="Sottotitolo"><br>
 
-        <label for="author">Autore:</label>
-        <input type="text" name="author" placeholder="Autore"><br>
+        {{-- <label for="author">Autore:</label>
+        <input type="text" name="author" placeholder="Autore"><br> --}}
 
         <label for="date">Data:</label>
         <input type="date" name="date"><br>

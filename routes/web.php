@@ -19,4 +19,4 @@ Route::get('/logout', 'Auth\LoginController@logout') -> name('logout');
 Route::get('/posts', 'GuestController@posts') -> name('posts');
 
 Route::get('/create', 'GuestController@create') -> name('create');
-Route::post('/', 'GuestController@store') -> name('store');
+Route::post('/store', 'GuestController@store') -> name('store');
