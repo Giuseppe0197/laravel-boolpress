@@ -24,6 +24,10 @@
             <p class="description-post">Descrizione: {{$post -> description}}</p>
 
             <p>Categoria: {{$post -> category -> name}}</p>
+            <span>Lista persone con tag: </span>
+            @foreach ($post -> tags as $tag)
+                {{$tag -> name}} -
+            @endforeach
     
         </div>
 
