@@ -28,13 +28,16 @@
             @foreach ($post -> tags as $tag)
                 {{$tag -> name}} -
             @endforeach
-    
+            <br>
+            <a class="btn btn-primary my-1 ml-2" href="{{route('edit', $post -> id)}}">Modifica</a><br>
+
+            <a class="btn btn-danger mb-3 ml-2" href="{{route('delete', $post -> id)}}">Cancella Post</a>
         </div>
 
         @endforeach
 
     </div>
 
-    <a href="{{route('create')}}">Crea il tuo post</a>
+    <a class="btn btn-secondary my-1" href="{{route('create')}}">Crea il tuo post</a>
     
 @endsection

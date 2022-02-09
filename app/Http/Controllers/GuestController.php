@@ -53,4 +53,47 @@ class GuestController extends Controller
 
         return redirect() -> route('posts');
     }
+
+    public function edit($id) {
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        $post = Post::findOrFail($id);
+
+        return view('pages.edit', compact('categories', 'tags', 'post'));
+    }
+
+    public function update(Request $request, $id) {
+
+        $datas = $request -> validate([
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'date' => 'required|date',
+            'description' => 'required|'
+        ]);
+
+        $datas['author'] = Auth::user() -> name;
+
+        $post = Post::findOrFail($id);
+        $post -> update($datas);
+
+        $category = Category::findOrFail($request -> get('category_id'));
+        $post -> category() -> associate($category);
+        $post -> save();
+
+        $tags = Tag::findOrFail($request -> get('tags'));
+        $post -> tags() -> sync($tags);
+        $post -> save();
+
+        return redirect() -> route('posts');
+    }
+
+    public function delete($id) {
+        $post = Post::findOrFail($id);
+        $post -> tags() -> sync([]);
+        $post -> save();
+
+        $post -> delete();
+        return redirect() -> route('posts');
+    }
 }
